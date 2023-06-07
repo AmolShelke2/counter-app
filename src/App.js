@@ -30,15 +30,15 @@ const reducer = (state, action) => {
 
 const CounterAppWithReducer = () => {
   // using useState to create the count state
-  const [count, setCount] = useState(0);
-
-  // changing the title depend on the count value
-  useEffect(() => {
-    document.title = `Count ${count}`;
-  }, [count]);
+  // const [initialCountState, setInitialStateCount] = useState({ count: 0 });
 
   // using useReducer for managing state
   const [state, dispatch] = useReducer(reducer, initialCountState);
+
+  // changing the title depend on the state count value
+  useEffect(() => {
+    document.title = `Count ${state.count}`;
+  }, [state.count]);
 
   return (
     <counterContext.Provider value={{ state, dispatch }}>
